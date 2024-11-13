@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-$7(@&+o!n91f)-m4hdm0)n0m(mwfaschqo$@yze(u(y@c1fqrw
 DEBUG = True
 
 # Update the ALLOWED_HOSTS as per the requirement
-ALLOWED_HOSTS = ['Django_Project.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['DJANGO_PROJECT.onrender.com', '127.0.0.1']
 
 # Application definition
 
