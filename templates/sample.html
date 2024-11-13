@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #343a40;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            position: relative; /* Added for positioning of the photo */
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .photo {
+            position: absolute; /* Changed to absolute positioning */
+            top: 30px; /* Adjust this value for desired vertical spacing */
+            left: 30px; /* Adjust this value for desired horizontal spacing */
+            text-align: center;
+        }
+
+        .photo img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .photo img:hover {
+            transform: scale(1.05);
+        }
+
+        .section {
+            margin-top: 180px; /* Add top margin to sections to make space for the photo */
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .section p, .section ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ name }}</h1> <!-- Dynamically render the name -->
+        <div class="photo">
+            <img src="{{ photo_url }}" alt="{{ name }}"> <!-- Dynamically render the photo -->
+        </div>
+
+        <div class="section contact-info">
+            <h2>Contact Information</h2>
+            <p>Email: {{ email }}</p> <!-- Dynamically render the email -->
+            <p>Phone: {{ phone }}</p> <!-- Dynamically render the phone -->
+            <p>Address: {{ address }}</p> <!-- Add address field dynamically -->
+        </div>
+
+        <div class="section education">
+            <h2>Education</h2>
+            <p><strong>{{ education.degree }}</strong></p> <!-- Dynamically render degree -->
+            <p>{{ education.institution }}, {{ education.city }}, {{ education.state }}</p> <!-- Render education details -->
+            <p>Graduated: {{ education.graduation_date }}</p> <!-- Render graduation date -->
+        </div>
+
+        <div class="section experience">
+            <h2>Experience</h2>
+            <p><strong>{{ experience.position }}</strong></p> <!-- Dynamically render position -->
+            <p>{{ experience.company }}, {{ experience.city }}, {{ experience.state }}</p> <!-- Render company details -->
+            <ul>
+                {% for task in experience.tasks %} <!-- Dynamically render tasks -->
+                    <li>{{ task }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="section skills">
+            <h2>Skills</h2>
+            <ul>
+                {% for skill in skills %} <!-- Dynamically render skills -->
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 {{ name }}. All rights reserved.</p> <!-- Dynamically render the name -->
+        </div>
+    </div>
+</body>
+</html>

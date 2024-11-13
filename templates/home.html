@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff; /* Blue color for the link */
+            font-size: 22px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Keyframes for the text animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Bouncing link animation */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Particle animation for floating dots in the background */
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px) translateX(30px);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+        }
+
+        .particle:nth-child(1) {
+            top: 10%;
+            left: 15%;
+            animation-duration: 7s;
+        }
+
+        .particle:nth-child(2) {
+            top: 30%;
+            left: 45%;
+            animation-duration: 9s;
+        }
+
+        .particle:nth-child(3) {
+            top: 50%;
+            left: 70%;
+            animation-duration: 6s;
+        }
+
+        .particle:nth-child(4) {
+            top: 80%;
+            left: 20%;
+            animation-duration: 8s;
+        }
+
+        .particle:nth-child(5) {
+            top: 60%;
+            left: 85%;
+            animation-duration: 5s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Resume Generator</h1>
+    <a href="{% url 'resume' %}">Generate Your Resume</a>
+
+    <!-- Particle effect elements -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</body>
+</html>

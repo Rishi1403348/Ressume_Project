@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+    <style>
+        /* General styling for the body and background */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Particle animation for floating dots in the background */
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px) translateX(30px);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+        }
+
+        /* Form styling */
+        form {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 450px;
+            z-index: 1;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="file"], input[type="email"], input[type="tel"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input:focus, textarea:focus {
+            box-shadow: 0 0 8px rgba(0, 102, 255, 0.5);
+            transform: scale(1.02);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #004bb5;
+            transform: scale(1.05);
+        }
+
+        .instructions {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .instructions ul {
+            margin: 0;
+            padding: 0 0 0 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 5px;
+        }
+
+        /* Input glow animation */
+        .form-group input:focus, .form-group textarea:focus {
+            animation: glow 0.6s ease-in-out alternate infinite;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 8px rgba(0, 102, 255, 0.6);
+            }
+            100% {
+                box-shadow: 0 0 16px rgba(0, 102, 255, 0.9);
+            }
+        }
+    </style>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" action="{% url 'resume' %}">
+        {% csrf_token %}
+        <h2>Resume Builder</h2>
+
+        <div class="instructions">
+            <p>Please fill in the details below to generate your resume:</p>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="photo">Photo:</label>
+            <input type="file" id="photo" name="photo">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your contact number" required>
+        </div>
+
+        <div class="form-group">
+            <label for="education">Education:</label>
+            <textarea id="education" name="education" rows="3" placeholder="Provide details of your education (e.g., degree, university, year)"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="experience">Experience:</label>
+            <textarea id="experience" name="experience" rows="3" placeholder="Include your work experience (if applicable)"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="skills">Skills:</label>
+            <textarea id="skills" name="skills" rows="3" placeholder="List your key skills"></textarea>
+        </div>
+
+        <button type="submit">Generate Resume</button>
+    </form>
+
+    <!-- Particle effect elements -->
+    <div class="particle" style="top: 20%; left: 5%; animation-duration: 7s;"></div>
+    <div class="particle" style="top: 30%; left: 15%; animation-duration: 9s;"></div>
+    <div class="particle" style="top: 60%; left: 20%; animation-duration: 8s;"></div>
+    <div class="particle" style="top: 80%; left: 45%; animation-duration: 6s;"></div>
+    <div class="particle" style="top: 50%; left: 70%; animation-duration: 10s;"></div>
+    <div class="particle" style="top: 20%; left: 90%; animation-duration: 7s;"></div>
+</body>
+</html>
